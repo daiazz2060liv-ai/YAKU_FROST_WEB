@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="YAKU FROST — Sistema automatizado de detección temprana de bajas temperaturas y alerta para cultivos andinos de Pomabamba. EUREKA 2026.">
+<title>YAKU FROST | EUREKA 2026</title>
+<style>
+:root{
+  --sky:#65c7ee; --sky2:#dff6ff; --deep:#0b4f71; --navy:#083b59;
+  --ink:#163447; --muted:#5f7888; --white:#fff; --line:#ccebf7;
+  --shadow:0 18px 50px rgba(12,82,113,.12); --radius:24px;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#f7fcff;line-height:1.65}
+a{color:inherit}
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navin{max-width:1180px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:900;letter-spacing:.08em;color:var(--deep);text-decoration:none}
+.menu{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.menu a{text-decoration:none;font-size:.86rem;font-weight:700;color:#3c6274;padding:7px 9px;border-radius:10px}
+.menu a:hover{background:var(--sky2);color:var(--deep)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#eafaff 0%,#fff 48%,#d8f4ff 100%);padding:90px 20px 80px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.55}
+.hero:before{width:360px;height:360px;background:#bceeff;right:-100px;top:-120px}
+.hero:after{width:220px;height:220px;background:#fff;left:-90px;bottom:-100px}
+.hero-in{max-width:1180px;margin:auto;position:relative;z-index:1}
+.badge{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(38,147,187,.08);padding:8px 13px;border-radius:999px;color:var(--deep);font-weight:800;font-size:.84rem}
+h1{font-size:clamp(2.6rem,6vw,5.5rem);line-height:.98;margin:22px 0 18px;color:var(--navy);letter-spacing:-.045em}
+.subtitle{max-width:820px;font-size:clamp(1.05rem,2vw,1.35rem);color:#41687a;margin:0 0 30px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:end}
+.hero-card{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:28px;padding:25px;box-shadow:var(--shadow)}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.meta div{background:#f8fdff;border:1px solid #d9f0f8;border-radius:16px;padding:13px}
+.meta b{display:block;color:var(--deep);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.section{padding:76px 20px}
+.wrap{max-width:1180px;margin:auto}
+.section.alt{background:#fff}
+.eyebrow{color:#279bc8;text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:900}
+h2{font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;color:var(--navy);margin:8px 0 15px}
+.lead{max-width:800px;color:var(--muted)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 8px;color:var(--deep)}
+.icon{width:46px;height:46px;border-radius:15px;background:var(--sky2);display:grid;place-items:center;color:var(--deep);font-size:1.35rem;margin-bottom:14px}
+.stat{font-size:2.5rem;font-weight:950;color:var(--deep);line-height:1}
+.stat small{font-size:.95rem;font-weight:700;color:var(--muted)}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:28px}
+.flow span{padding:12px 15px;background:#fff;border:1px solid var(--line);border-radius:15px;font-weight:800;color:var(--deep);box-shadow:0 7px 20px rgba(19,104,135,.07)}
+.arrow{color:#6bbbd7;font-weight:900}
+.notice{border-left:5px solid var(--sky);background:#f0fbff;border-radius:14px;padding:17px 18px;margin-top:20px;color:#426678}
+table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;background:#fff}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid #e5f2f7}
+th{background:#eaf9ff;color:var(--deep);font-size:.86rem}
+tr:last-child td{border-bottom:0}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:linear-gradient(180deg,#fff,#f1fbff);border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center}
+.kpi strong{display:block;font-size:2.2rem;color:var(--deep);line-height:1}
+.kpi span{display:block;color:var(--muted);margin-top:7px;font-size:.9rem}
+.barbox{margin:16px 0}
+.barlabel{display:flex;justify-content:space-between;font-weight:800;color:#466a7b}
+.bar{height:13px;background:#e7f5fa;border-radius:999px;overflow:hidden;margin-top:7px}
+.fill{height:100%;background:linear-gradient(90deg,#74d4f3,#238db9);border-radius:999px}
+.chart{width:100%;height:auto;background:#fbfeff;border:1px solid var(--line);border-radius:20px;padding:10px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.gallery img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;background:#eefaff}
+.gallery figcaption{padding:10px 12px;font-size:.85rem;color:#557180}
+.timeline{display:grid;gap:12px}
+.tline{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start}
+.tline .date{font-weight:900;color:var(--deep);background:#eaf9ff;padding:9px 12px;border-radius:12px}
+footer{background:#083b59;color:#e4f7ff;padding:42px 20px}
+.footerin{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+small.note{color:#6b8794}
+@media(max-width:900px){.hero-grid,.g2{grid-template-columns:1fr}.g3,.g4{grid-template-columns:repeat(2,1fr)}.kpis{grid-template-columns:repeat(2,1fr)}.menu{display:none}}
+@media(max-width:600px){.section{padding:55px 15px}.hero{padding:70px 15px}.g3,.g4,.kpis,.gallery{grid-template-columns:1fr}.meta{grid-template-columns:1fr}.tline{grid-template-columns:1fr;gap:8px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="navin">
+<a class="brand" href="#inicio">YAKU FROST</a>
+<div class="menu">
+<a href="#problema">Problema</a><a href="#solucion">Solución</a><a href="#funcionamiento">Funcionamiento</a>
+<a href="#materiales">Materiales</a><a href="#resultados">Resultados</a><a href="#evidencias">Evidencias</a><a href="#conclusiones">Conclusiones</a>
+</div></div></nav>
+
+<header class="hero" id="inicio"><div class="hero-in">
+<div class="hero-grid">
+<div>
+<span class="badge">❄️ EUREKA – 2026 · Solución tecnológica</span>
+<h1>YAKU<br>FROST</h1>
+<p class="subtitle"><b>Sistema automatizado de detección temprana de bajas temperaturas y alerta para cultivos andinos de Pomabamba.</b></p>
+<p class="subtitle">Un prototipo que convierte la temperatura ambiental en información, alerta y una respuesta de riego programada mediante DHT22, ESP32 y un conjunto de actuadores.</p>
+</div>
+<div class="hero-card">
+<div class="meta">
+<div><b>Integrantes</b>Valeria Paredes Flores<br>Ayelen Amira Silva De los Santos</div>
+<div><b>Grado</b>2.º de secundaria</div>
+<div><b>Institución</b>IE Parroquial San José – Pomabamba</div>
+<div><b>Asesor</b>Área de Ciencia y Tecnología</div>
+</div>
+</div>
+</div></div></header>
+
+<section class="section" id="problema"><div class="wrap">
+<span class="eyebrow">01 · Contexto</span><h2>Un problema de las noches frías</h2>
+<p class="lead">En Pomabamba, las caídas de temperatura durante las noches frías representan un riesgo para las familias agricultoras y sus cultivos. El proyecto identifica como problema tecnológico la ausencia de un sistema accesible que mida continuamente la temperatura, comunique una condición de riesgo y ejecute una respuesta programada sin monitoreo permanente.</p>
+<div class="grid g3" style="margin-top:28px">
+<div class="card"><div class="icon">🌡️</div><h3>Monitoreo</h3><p>Medición continua de la temperatura ambiental mediante el sensor DHT22.</p></div>
+<div class="card"><div class="icon">🚨</div><h3>Alerta</h3><p>Comunicación visual y sonora mediante LCD, LEDs y buzzer.</p></div>
+<div class="card"><div class="icon">💧</div><h3>Respuesta</h3><p>Activación programada del conjunto relé–minibomba para iniciar la salida de agua.</p></div>
+</div>
+<div class="notice"><b>Pregunta de solución tecnológica:</b> ¿Cómo diseñar e implementar un sistema automatizado (ESP32 + DHT22) que detecte caídas de temperatura a tiempo y emita una advertencia cuando haya una condición de riesgo para los cultivos andinos en Pomabamba?</div>
+</div></section>
+
+<section class="section alt" id="solucion"><div class="wrap">
+<span class="eyebrow">02 · Diseño</span><h2>La arquitectura de YAKU FROST</h2>
+<p class="lead">El DHT22 constituye la entrada; el ESP32 realiza el procesamiento; LCD, LEDs y buzzer comunican el estado; y el relé y la minibomba ejecutan la respuesta programada.</p>
+<div class="flow" id="funcionamiento">
+<span>🌡️ DHT22</span><i class="arrow">→</i><span>🧠 ESP32</span><i class="arrow">→</i><span>🖥️ LCD</span><span>🔵 LED azul</span><span>🔴 LED rojo</span><span>🔊 Buzzer</span><i class="arrow">→</i><span>⚡ Relé</span><i class="arrow">→</i><span>💧 Minibomba</span><i class="arrow">→</i><span>🌱 Salida de agua</span>
+</div>
+<div class="grid g2" style="margin-top:28px">
+<div class="card"><h3>Condición normal</h3><p>El sistema muestra el estado correspondiente y mantiene la alerta sonora desactivada. El LED azul representa la condición normal.</p></div>
+<div class="card"><h3>Condición programada de riesgo</h3><p>Se activa el LED rojo y el buzzer; si la programación lo indica, el ESP32 envía una señal al relé para controlar la minibomba.</p></div>
+</div>
+<div class="notice"><b>Importante:</b> los valores de 8–5 °C utilizados en las pruebas son umbrales experimentales del prototipo y no temperaturas agronómicas universales para todos los cultivos.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<span class="eyebrow">03 · Umbrales experimentales</span><h2>Condiciones usadas para probar el prototipo</h2>
+<div class="table-wrap"><table><thead><tr><th>Temperatura / rango</th><th>Uso experimental</th><th>Interpretación</th></tr></thead><tbody>
+<tr><td>15 °C</td><td>Comprobación de condición normal</td><td>Verificación sin condición de alerta</td></tr>
+<tr><td>8–7 °C</td><td>Inicio y seguimiento del descenso</td><td>Condición experimental de advertencia</td></tr>
+<tr><td>6–5 °C</td><td>Continuación del descenso</td><td>Mayor nivel de atención dentro de las pruebas</td></tr>
+<tr><td>2 °C</td><td>Prueba de condición extrema baja</td><td>Comprobación de la lógica de activación</td></tr>
+<tr><td>32 °C</td><td>Prueba de condición alta</td><td>Comprobación de la lógica del programa</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="section alt" id="materiales"><div class="wrap">
+<span class="eyebrow">04 · Construcción</span><h2>Componentes del sistema</h2>
+<div class="grid g3">
+<div class="card"><div class="icon">⚙️</div><h3>ESP32 DevKit V1</h3><p>Procesamiento y control</p></div><div class="card"><div class="icon">⚙️</div><h3>DHT22</h3><p>Medición de temperatura y humedad</p></div><div class="card"><div class="icon">⚙️</div><h3>LCD 1602 con I2C</h3><p>Visualización</p></div><div class="card"><div class="icon">⚙️</div><h3>LED azul y LED rojo</h3><p>Señales visuales</p></div><div class="card"><div class="icon">⚙️</div><h3>Buzzer</h3><p>Alerta sonora</p></div><div class="card"><div class="icon">⚙️</div><h3>Relé de 1 canal</h3><p>Control de la minibomba</p></div><div class="card"><div class="icon">⚙️</div><h3>Minibomba y manguera</h3><p>Respuesta mediante agua</p></div><div class="card"><div class="icon">⚙️</div><h3>Protoboard y cables jumper</h3><p>Conexiones</p></div><div class="card"><div class="icon">⚙️</div><h3>Resistencias</h3><p>Protección de LEDs</p></div><div class="card"><div class="icon">⚙️</div><h3>Fuente y cable USB</h3><p>Alimentación</p></div><div class="card"><div class="icon">⚙️</div><h3>Recipiente de agua</h3><p>Reserva para demostración</p></div><div class="card"><div class="icon">⚙️</div><h3>Laptop + Thonny + MicroPython</h3><p>Programación</p></div>
+</div>
+<h2 style="margin-top:55px">Costos estimados</h2>
+<div class="table-wrap"><table><thead><tr><th>Material</th><th>Cantidad</th><th>Costo aprox. (S/)</th></tr></thead><tbody>
+<tr><td>ESP32 DevKit V1</td><td>1</td><td>35.00</td></tr><tr><td>DHT22</td><td>1</td><td>18.00</td></tr><tr><td>LCD 1602 I2C</td><td>1</td><td>15.00</td></tr><tr><td>LED azul + rojo</td><td>2</td><td>2.00</td></tr><tr><td>Resistencias</td><td>Varias</td><td>1.00</td></tr><tr><td>Buzzer</td><td>1</td><td>5.00</td></tr><tr><td>Relé 1 canal</td><td>1</td><td>8.00</td></tr><tr><td>Minibomba</td><td>1</td><td>15.00</td></tr><tr><td>Manguera</td><td>1</td><td>4.00</td></tr><tr><td>Protoboard</td><td>1</td><td>12.00</td></tr><tr><td>Cables jumper</td><td>Varios</td><td>10.00</td></tr><tr><td>Fuente</td><td>1</td><td>10.00</td></tr><tr><td>Cable USB</td><td>1</td><td>8.00</td></tr><tr><td>Recipiente</td><td>1</td><td>2.00</td></tr><tr><td>Envío</td><td>—</td><td>10.00</td></tr>
+<tr><th colspan="2">Costo total reportado</th><th>S/ 155,00</th></tr>
+</tbody></table></div>
+<p><small class="note">La laptop y el software Thonny/MicroPython no se contabilizaron como gasto porque ya estaban disponibles o son gratuitos.</small></p>
+</div></section>
+
+<section class="section"><div class="wrap">
+<span class="eyebrow">05 · Desarrollo</span><h2>Construcción, programación e integración</h2>
+<div class="timeline">
+<div class="tline"><div class="date">25 mayo – 8 junio</div><div class="card"><h3>Identificación e investigación</h3><p>7 jornadas · 14 h</p></div></div>
+<div class="tline"><div class="date">10 – 15 junio</div><div class="card"><h3>Diseño de la solución</h3><p>3 jornadas · 6 h</p></div></div>
+<div class="tline"><div class="date">17 – 24 junio</div><div class="card"><h3>Selección y adquisición</h3><p>4 jornadas · 8 h</p></div></div>
+<div class="tline"><div class="date">26 junio – 22 julio</div><div class="card"><h3>Construcción, programación e integración</h3><p>12 jornadas · 24 h</p></div></div>
+<div class="tline"><div class="date">24 – 27 julio</div><div class="card"><h3>Pruebas y corrección de fallas</h3><p>2 jornadas · 4 h</p></div></div>
+<div class="tline"><div class="date">29 – 31 julio</div><div class="card"><h3>Revisión y evaluación final</h3><p>2 jornadas · 4 h</p></div></div>
+</div>
+<div class="kpis" style="margin-top:25px"><div class="kpi"><strong>30</strong><span>sesiones</span></div><div class="kpi"><strong>60 h</strong><span>de trabajo</span></div><div class="kpi"><strong>24 h</strong><span>en construcción e integración</span></div><div class="kpi"><strong>4</strong><span>etapas de evolución</span></div></div>
+</div></section>
+
+<section class="section alt" id="resultados"><div class="wrap">
+<span class="eyebrow">06 · Validación</span><h2>Resultados del prototipo</h2>
+<div class="kpis">
+<div class="kpi"><strong>0.6 °C</strong><span>diferencia absoluta media DHT22–termómetro</span></div>
+<div class="kpi"><strong>90 %</strong><span>respuestas correctas · 18 de 20</span></div>
+<div class="kpi"><strong>1.4 s</strong><span>tiempo medio aproximado</span></div>
+<div class="kpi"><strong>90 %</strong><span>activaciones correctas · 9 de 10</span></div>
+</div>
+<div class="grid g2" style="margin-top:28px">
+<div class="card"><h3>Validación del sensor DHT22</h3><p>Se realizaron 10 comparaciones con un termómetro de referencia en el mismo ambiente. La diferencia absoluta media fue de <b>0,6 °C</b>; la mayor diferencia individual fue 0,8 °C y la menor 0,4 °C.</p>
+<div class="barbox"><div class="barlabel"><span>Mayor diferencia</span><span>0.8 °C</span></div><div class="bar"><div class="fill" style="width:80%"></div></div></div>
+<div class="barbox"><div class="barlabel"><span>Media</span><span>0.6 °C</span></div><div class="bar"><div class="fill" style="width:60%"></div></div></div>
+</div>
+<div class="card"><h3>Funcionamiento integrado</h3><p>En 20 pruebas con diferentes condiciones de temperatura, 18 respuestas coincidieron con lo programado y 2 presentaron alguna dificultad.</p>
+<div class="barbox"><div class="barlabel"><span>Correctas</span><span>18 / 20</span></div><div class="bar"><div class="fill" style="width:90%"></div></div></div>
+<div class="barbox"><div class="barlabel"><span>Con dificultad</span><span>2 / 20</span></div><div class="bar"><div class="fill" style="width:10%"></div></div></div>
+</div>
+</div>
+
+<div class="card" style="margin-top:22px"><h3>Descenso progresivo de temperatura</h3><p>El prototipo fue observado durante un descenso de 8,0 °C a 5,0 °C, permitiendo evaluar su comportamiento durante una trayectoria de enfriamiento y no solo ante un valor aislado.</p>
+<div class="chart">
+<svg viewBox="0 0 720 300" role="img" aria-label="Descenso progresivo de temperatura de 8 a 5 grados">
+<line x1="60" y1="25" x2="60" y2="250" stroke="#b8dce9"/><line x1="60" y1="250" x2="690" y2="250" stroke="#b8dce9"/>
+<polyline points="70,50 155,82 240,114 325,146 410,178 495,194 580,211 665,234" fill="none" stroke="#258fb8" stroke-width="5"/>
+<circle cx="70" cy="50.0" r="6" fill="#258fb8"/><circle cx="155" cy="27.0" r="6" fill="#258fb8"/><circle cx="240" cy="4.0" r="6" fill="#258fb8"/><circle cx="325" cy="-19.0" r="6" fill="#258fb8"/><circle cx="410" cy="-42.0" r="6" fill="#258fb8"/><circle cx="495" cy="-55.8" r="6" fill="#258fb8"/><circle cx="580" cy="-69.59999999999998" r="6" fill="#258fb8"/><circle cx="665" cy="-88.0" r="6" fill="#258fb8"/>
+<text x="64" y="274" font-size="14" fill="#557180">8 °C</text><text x="635" y="274" font-size="14" fill="#557180">5 °C</text>
+<text x="70" y="22" font-size="15" fill="#0b4f71" font-weight="700">Temperatura experimental</text>
+</svg></div></div>
+
+<h2 style="margin-top:55px">Tabla de validación DHT22</h2>
+<div class="table-wrap"><table><thead><tr><th>N.º</th><th>Termómetro °C</th><th>DHT22 °C</th><th>Diferencia abs. °C</th></tr></thead><tbody>
+<tr><td>1</td><td>8.0</td><td>8.4</td><td>0.4</td></tr><tr><td>2</td><td>7.8</td><td>8.4</td><td>0.6</td></tr><tr><td>3</td><td>7.5</td><td>8.2</td><td>0.7</td></tr><tr><td>4</td><td>7.2</td><td>7.7</td><td>0.5</td></tr><tr><td>5</td><td>7.0</td><td>7.6</td><td>0.6</td></tr><tr><td>6</td><td>6.8</td><td>7.6</td><td>0.8</td></tr><tr><td>7</td><td>6.5</td><td>7.0</td><td>0.5</td></tr><tr><td>8</td><td>6.2</td><td>6.8</td><td>0.6</td></tr><tr><td>9</td><td>6.0</td><td>6.7</td><td>0.7</td></tr><tr><td>10</td><td>5.8</td><td>6.4</td><td>0.6</td></tr>
+</tbody></table></div>
+
+<h2 style="margin-top:55px">Síntesis estadística</h2>
+<div class="table-wrap"><table><thead><tr><th>Variable evaluada</th><th>n</th><th>Resultado principal</th><th>Interpretación</th></tr></thead><tbody>
+<tr><td>Diferencia DHT22–termómetro</td><td>10</td><td><b>0.6 °C media</b></td><td>Lecturas cercanas en la prueba</td></tr><tr><td>Funcionamiento global</td><td>20</td><td><b>90 % correcto</b></td><td>Desempeño funcional en las condiciones evaluadas</td></tr><tr><td>Tiempo de respuesta</td><td>5</td><td><b>1.4 s promedio</b></td><td>Respuesta rápida dentro del prototipo</td></tr><tr><td>Activación del riego</td><td>10</td><td><b>90 % correcto</b></td><td>Respuesta automática funcional en las pruebas</td></tr>
+</tbody></table></div>
+<div class="notice"><b>Alcance:</b> el 90 % obtenido representa el rendimiento del prototipo bajo las condiciones evaluadas, no una tasa de fiabilidad universal. La evidencia demuestra funcionamiento tecnológico, electrónico y de control; no demuestra por sí sola capacidad de predecir heladas meteorológicas ni eficacia agronómica de protección contra heladas.</div>
+</div></section>
+
+<section class="section" id="evidencias"><div class="wrap">
+<span class="eyebrow">07 · Evidencias</span><h2>Proceso de construcción y pruebas</h2>
+<p class="lead">El informe incluye evidencias fotográficas de la construcción, programación, integración y pruebas del prototipo, además del diagrama general de la solución.</p>
+<div class="gallery">
+<figure><img src="assets/evidencia_6.png" alt="Representación funcional de la solución tecnológica"><figcaption>Figura 1 · Representación funcional de la solución tecnológica.</figcaption></figure>
+<figure><img src="assets/evidencia_11.png" alt="Diagrama general de YAKU FROST"><figcaption>Figura 9 · Diagrama general y relación entre componentes.</figcaption></figure>
+<figure><img src="assets/evidencia_7.png" alt="Comparación de lecturas del termómetro y DHT22"><figcaption>Figura 5 · Comparación de lecturas del termómetro y DHT22.</figcaption></figure>
+<figure><img src="assets/evidencia_8.png" alt="Diferencia absoluta entre DHT22 y termómetro"><figcaption>Figura 6 · Diferencia absoluta de cada medición.</figcaption></figure>
+<figure><img src="assets/evidencia_9.png" alt="Resultado de las pruebas de funcionamiento"><figcaption>Figura 7 · Resultado global de las 20 pruebas de funcionamiento.</figcaption></figure>
+<figure><img src="assets/evidencia_10.png" alt="Activación del sistema de riego"><figcaption>Figura 8 · Resultados de activación del sistema de riego en 10 pruebas.</figcaption></figure>
+<figure><img src="assets/evidencia_13.png" alt="Construcción del prototipo"><figcaption>Figura 2 · Integración física del circuito durante la construcción.</figcaption></figure>
+<figure><img src="assets/evidencia_15.png" alt="Programación del ESP32"><figcaption>Figura 3 · Trabajo de programación del ESP32 durante el desarrollo.</figcaption></figure>
+<figure><img src="assets/evidencia_14.png" alt="Sistema de riego integrado"><figcaption>Figura 4 · Sistema de riego integrado al prototipo.</figcaption></figure>
+<figure><img src="assets/evidencia_12.png" alt="Evidencia de construcción e integración"><figcaption>Anexos · Evidencias fotográficas de construcción, integración y pruebas.</figcaption></figure>
+</div>
+<div class="notice">Las imágenes corresponden al material visual incorporado en el informe. El sitio las organiza como galería para facilitar la exposición del proyecto.</div>
+</div></section>
+
+<section class="section alt" id="conclusiones"><div class="wrap">
+<span class="eyebrow">08 · Evaluación</span><h2>Conclusiones y límites</h2>
+<div class="grid g2">
+<div class="card"><h3>¿Qué se logró?</h3><ul>
+<li>Integrar DHT22, ESP32, LCD 1602, LEDs, zumbador, relé y mini bomba en un sistema automatizado.</li>
+<li>Obtener una diferencia media absoluta de 0,6 °C entre DHT22 y termómetro en 10 comparaciones.</li>
+<li>Alcanzar 18 respuestas correctas de 20 pruebas (90%).</li>
+<li>Registrar un tiempo de respuesta aproximado de 1–2 s, con promedio cercano a 1,4 s.</li>
+<li>Conseguir 9 activaciones correctas de la minibomba de 10 pruebas (90%).</li>
+</ul></div>
+<div class="card"><h3>¿Qué todavía no demuestra?</h3><ul>
+<li>Los 8–5 °C son umbrales experimentales del prototipo, no límites agronómicos universales.</li>
+<li>La activación de la bomba demuestra el funcionamiento del mecanismo, pero no por sí misma protección del cultivo.</li>
+<li>La eficacia agronómica depende del cultivo, etapa de desarrollo, caudal, cobertura, continuidad, viento y otras condiciones.</li>
+<li>Los resultados no permiten extrapolar el rendimiento a todas las noches de Pomabamba o a todos los cultivos.</li>
+</ul></div>
+</div>
+<div class="notice"><b>Enfoque del proyecto:</b> YAKU FROST valida principalmente el rendimiento tecnológico, electrónico y de control del prototipo. Esta distinción se mantiene para evitar conclusiones que no estén sustentadas por las pruebas realizadas.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<span class="eyebrow">09 · Impacto y seguridad</span><h2>Uso responsable</h2>
+<div class="grid g3">
+<div class="card"><div class="icon">🔌</div><h3>Seguridad eléctrica</h3><p>El contenedor y la manguera deben mantenerse alejados del ESP32 y la protoboard. Se debe apagar la energía antes de modificar conexiones y trabajar sobre una superficie seca.</p></div>
+<div class="card"><div class="icon">💦</div><h3>Consumo de agua</h3><p>El principal impacto ambiental potencial es el consumo de agua. La activación programada permite regular el uso del recurso dentro del prototipo.</p></div>
+<div class="card"><div class="icon">🌱</div><h3>Aplicación agrícola</h3><p>La respuesta mediante agua debe evaluarse considerando caudal, cobertura, continuidad y condiciones climáticas específicas.</p></div>
+</div>
+</div></section>
+
+<section class="section alt"><div class="wrap">
+<span class="eyebrow">10 · Referencias</span><h2>Fuentes del informe</h2>
+<div class="card"><ol>
+<li>Adafruit Industries. (2026). <i>DHT11, DHT22 and AM2302 sensors: Basic temperature & humidity sensors.</i></li>
+<li>Ccallomamani Ccallomamani, A. R., & Villa Flores, G. J. (2025). Diseño de un prototipo de riego automatizado con monitoreo vía IoT para mitigar los efectos de las heladas en cultivos de zonas altoandinas.</li>
+<li>Espressif Systems. (2026). <i>ESP32 series datasheet</i> (Versión 5.3).</li>
+<li>Gobierno Regional de Áncash. (2024). <i>Plan de Desarrollo Regional Concertado de Áncash 2024–2034.</i></li>
+<li>Lavado Tisza, K., & Moran Retamozo, G. L. (2025). Diseño de un sistema de IoT para optimizar el riego de la agricultura en el distrito de Viñas.</li>
+<li>MicroPython. (s. f.). <i>MicroPython tutorial for ESP32.</i></li>
+<li>Ministerio del Ambiente. (2021). <i>Plan Nacional de Adaptación al Cambio Climático del Perú.</i></li>
+<li>Servicio Nacional de Meteorología e Hidrología del Perú. (2012). <i>Atlas de heladas del Perú.</i></li>
+<li>Servicio Nacional de Meteorología e Hidrología del Perú. (s. f.). <i>Heladas y friajes: preguntas frecuentes.</i></li>
+<li>Snyder, R. L., & de Melo-Abreu, J. P. (2005). <i>Frost protection: Fundamentals, practice, and economics.</i></li>
+<li>Thonny. (s. f.). <i>Thonny: Python IDE for beginners.</i></li>
+</ol></div>
+</div></section>
+
+<footer><div class="footerin">
+<div><b>YAKU FROST · EUREKA 2026</b><br>Sistema automatizado de detección temprana de bajas temperaturas y alerta para cultivos andinos de Pomabamba.</div>
+<div>Institución Educativa Parroquial San José – Pomabamba<br>Jr. Jorge Chávez Nº 262 - Convento, Pomabamba</div>
+</div></footer>
+</body></html>
